@@ -1,6 +1,6 @@
-<center><img src="https://github.com/Livsy90/IntelligenceGlow/blob/main/Demo.gif" width="200"></center>
-
 # IntelligenceGlow
+
+<img src="https://github.com/Livsy90/IntelligenceGlow/blob/main/demo.gif" width="200">
 
 A lightweight SwiftUI library that brings an **Apple Intelligence–style glowing stroke effect** to any `InsettableShape`.  
 It uses animated angular gradients, layered blurs, and smooth transitions to recreate the dynamic glow seen in Apple’s design language.
@@ -19,14 +19,6 @@ It uses animated angular gradients, layered blurs, and smooth transitions to rec
 
 In Xcode:  
 `File > Add Packages > https://github.com/your-username/IntelligenceGlow.git`
-
-Or add this to `Package.swift`:
-
-```swift
-dependencies: [
-    .package(url: "https://github.com/your-username/IntelligenceGlow.git", from: "1.0.0")
-]
-```
 
 ## Usage
 
