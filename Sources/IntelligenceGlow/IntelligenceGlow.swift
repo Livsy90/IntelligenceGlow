@@ -123,7 +123,6 @@ private struct IntelligenceStrokeView<S: InsettableShape>: View {
                     )
             }
         }
-        .compositingGroup()
         .task(id: updateInterval) {
             while !Task.isCancelled {
                 stops = gradientGenerator()
