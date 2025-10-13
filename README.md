@@ -18,7 +18,7 @@ It uses animated angular gradients, layered blurs, and smooth transitions to rec
 ### Swift Package Manager
 
 In Xcode:  
-`File > Add Packages > https://github.com/your-username/IntelligenceGlow.git`
+`File > Add Packages > https://github.com/Livsy90/IntelligenceGlow.git`
 
 ## Usage
 
