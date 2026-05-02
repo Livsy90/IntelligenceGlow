@@ -1,6 +1,6 @@
 # IntelligenceGlow
 
-<video src="https://raw.githubusercontent.com/Livsy90/IntelligenceGlow/main/IntelligenceGlowDemo.mp4" controls muted playsinline></video>
+<video src="https://github.com/Livsy90/IntelligenceGlow/blob/main/IntelligenceGlowDemo.mp4"></video>
 
 A lightweight SwiftUI library that brings an **Apple Intelligence–style glowing stroke effect** to any `InsettableShape`.  
 It uses animated angular gradients, layered blurs, and smooth transitions to recreate the dynamic glow seen in Apple’s design language.
