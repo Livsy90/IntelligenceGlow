@@ -1,6 +1,6 @@
 # IntelligenceGlow
 
-<img src="https://github.com/Livsy90/IntelligenceGlow/blob/main/demo.gif">
+<video src="https://raw.githubusercontent.com/Livsy90/IntelligenceGlow/main/IntelligenceGlowDemo.mp4" controls muted playsinline></video>
 
 A lightweight SwiftUI library that brings an **Apple Intelligence–style glowing stroke effect** to any `InsettableShape`.  
 It uses animated angular gradients, layered blurs, and smooth transitions to recreate the dynamic glow seen in Apple’s design language.
@@ -37,10 +37,23 @@ struct ContentView: View {
 
             Text("Glowing Rectangle")
                 .padding(22)
-                .intelligenceOverlay(in: RoundedRectangle(cornerRadius: 22))
+                .intelligenceOverlay(in: .rect(cornerRadius: 22))
         }
     }
 }
+```
+
+### Sweep Highlight
+
+Use `intelligenceSweep` when you want a moving Apple Intelligence-style sweep around a shape border instead of the full multi-layer glow:
+
+```swift
+Text("Intelligence Sweep")
+    .font(.headline)
+    .padding(22)
+    .intelligenceSweep(
+        in: .capsule,
+    )
 ```
 
 ### Customizing the Glow
@@ -48,7 +61,7 @@ struct ContentView: View {
 You can control line widths, blurs, animation speed, and gradient generation:
 
 ```swift
-Text("Custom Glow")
+Text("Intelligence Glow")
     .padding(24)
     .intelligenceOverlay(
         in: Capsule(),
@@ -56,7 +69,7 @@ Text("Custom Glow")
         blurs: [0, 6, 12],
         updateInterval: 0.5,
         animationDurations: [0.6, 0.8, 1.2],
-        gradientGenerator: { .intelligenceStyle }
+        gradientGenerator: .intelligenceStyle
     )
 ```
 
@@ -67,6 +80,16 @@ Text("Custom Glow")
 ```swift
 func intelligenceBackground<S: InsettableShape>(in shape: S, ...)
 func intelligenceOverlay<S: InsettableShape>(in shape: S, ...)
+@available(iOS 17.0, *)
+func intelligenceSweep<S: InsettableShape>(
+    in shape: S,
+    borderColor: Color = .primary,
+    colors: [Color] = .intelligenceColors,
+    blurRadius: CGFloat = 18,
+    lineWidth: CGFloat = 0.7,
+    sweepSpan: Double = 130,
+    sweepOffset: Double = 140
+) -> some View
 ```
 
 ### Shape Extension
@@ -85,14 +108,41 @@ func intelligenceStroke(
 
 ```swift
 #Preview {
-    VStack(spacing: 30) {
-        Text("Some text here")
-            .padding(22)
-            .intelligenceBackground(in: .capsule)
-
-        Text("Some text here")
-            .padding(22)
-            .intelligenceOverlay(in: .rect(cornerRadius: 22))
+    VStack(spacing: 45) {
+        if #available(iOS 17.0, *) {
+            Text("Intelligence Sweep")
+                .font(.headline)
+                .padding(22)
+                .intelligenceSweep(
+                    in: .capsule,
+                    borderColor: Color(red: 141/255, green: 159/255, blue: 255/255),
+                    sweepSpan: 130,
+                    sweepOffset: 140
+                )
+            
+            Text("Intelligence Sweep")
+                .font(.headline)
+                .padding(.horizontal, 24)
+                .padding(.vertical, 18)
+                .intelligenceSweep(
+                    in: .rect(cornerRadius: 16),
+                    sweepSpan: 90,
+                    sweepOffset: 220
+                )
+            
+            if #available(iOS 26.0, *) {
+                Text("Intelligence Glow")
+                    .font(.headline)
+                    .padding(22)
+                    .glassEffect()
+                    .intelligenceBackground(in: .capsule)
+            }
+            Text("Intelligence Glow")
+                .font(.headline)
+                .padding(22)
+                .intelligenceOverlay(in: .rect(cornerRadius: 22))
+        }
     }
 }
+
 ```

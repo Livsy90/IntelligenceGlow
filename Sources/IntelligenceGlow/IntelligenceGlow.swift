@@ -9,7 +9,7 @@ public extension View {
         blurs: [CGFloat] = [0, 4, 12, 15],
         updateInterval: TimeInterval = 0.4,
         animationDurations: [TimeInterval] = [0.5, 0.6, 0.8, 1.0],
-        gradientGenerator: @MainActor @Sendable @escaping () -> [Gradient.Stop] = { .intelligenceStyle }
+        gradientGenerator: @MainActor @Sendable @escaping @autoclosure () -> [Gradient.Stop] = .intelligenceStyle
     ) -> some View {
         background(
             shape.intelligenceStroke(
@@ -30,7 +30,7 @@ public extension View {
         blurs: [CGFloat] = [0, 4, 12, 15],
         updateInterval: TimeInterval = 0.4,
         animationDurations: [TimeInterval] = [0.5, 0.6, 0.8, 1.0],
-        gradientGenerator: @MainActor @Sendable @escaping () -> [Gradient.Stop] = { .intelligenceStyle }
+        gradientGenerator: @MainActor @Sendable @escaping @autoclosure () -> [Gradient.Stop] = .intelligenceStyle
     ) -> some View {
         overlay(
             shape.intelligenceStroke(
@@ -70,25 +70,6 @@ public extension InsettableShape {
             gradientGenerator: gradientGenerator
         )
         .allowsHitTesting(false)
-    }
-}
-
-public extension Array where Element == Gradient.Stop {
-    static var intelligenceStyle: [Gradient.Stop] {
-        [
-            Color(red: 188/255, green: 130/255, blue: 243/255),
-            Color(red: 245/255, green: 185/255, blue: 234/255),
-            Color(red: 141/255, green: 159/255, blue: 255/255),
-            Color(red: 255/255, green: 103/255, blue: 120/255),
-            Color(red: 255/255, green: 186/255, blue: 113/255),
-            Color(red: 198/255, green: 134/255, blue: 255/255)
-        ]
-            .map {
-                Gradient.Stop(color: $0, location: Double.random(in: 0...1))
-            }
-            .sorted {
-                $0.location < $1.location
-            }
     }
 }
 
@@ -133,16 +114,5 @@ private struct IntelligenceStrokeView<S: InsettableShape>: View {
                 }
             }
         }
-    }
-}
-
-#Preview {
-    VStack(spacing: 30) {
-        Text("Some text here")
-            .padding(22)
-            .intelligenceBackground(in: .capsule)
-        Text("Some text here")
-            .padding(22)
-            .intelligenceOverlay(in: .rect(cornerRadius: 22))
     }
 }
