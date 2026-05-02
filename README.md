@@ -115,34 +115,52 @@ func intelligenceStroke(
                 .padding(22)
                 .intelligenceSweep(
                     in: .capsule,
-                    borderColor: Color(red: 141/255, green: 159/255, blue: 255/255),
+                    borderColor: .purple,
                     sweepSpan: 130,
                     sweepOffset: 140
                 )
             
-            Text("Intelligence Sweep")
+            Text("Intelligence Glow Overlay")
                 .font(.headline)
-                .padding(.horizontal, 24)
-                .padding(.vertical, 18)
-                .intelligenceSweep(
-                    in: .rect(cornerRadius: 16),
-                    sweepSpan: 90,
-                    sweepOffset: 220
-                )
+                .padding(22)
+                .intelligenceOverlay(in: .rect(cornerRadius: 22))
+            
+            Text("Intelligence Glow Background")
+                .font(.headline)
+                .padding(22)
+                .intelligenceBackground(in: .capsule)
             
             if #available(iOS 26.0, *) {
-                Text("Intelligence Glow")
+                Text("Intelligence Glow Glass Background")
                     .font(.headline)
                     .padding(22)
                     .glassEffect()
                     .intelligenceBackground(in: .capsule)
+                
+                Text("Intelligence Glass Sweep")
+                    .font(.headline)
+                    .padding(22)
+                    .glassEffect(.clear)
+                    .intelligenceSweep(
+                        in: .capsule,
+                        blurRadius: 45,
+                        sweepSpan: 90,
+                        sweepOffset: 220
+                    )
+                
+                Text("Intelligence Sweep + Intelligence Glow")
+                    .font(.headline)
+                    .padding(22)
+                    .glassEffect(.clear)
+                    .intelligenceBackground(in: .capsule)
+                    .intelligenceSweep(
+                        in: .capsule,
+                        blurRadius: 45,
+                        sweepSpan: 90,
+                        sweepOffset: 220
+                    )
             }
-            Text("Intelligence Glow")
-                .font(.headline)
-                .padding(22)
-                .intelligenceOverlay(in: .rect(cornerRadius: 22))
         }
     }
 }
-
 ```
