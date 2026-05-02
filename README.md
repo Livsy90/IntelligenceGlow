@@ -3,7 +3,9 @@
 A lightweight SwiftUI library that brings an **Apple Intelligence–style glowing stroke effect** to any `InsettableShape`.  
 It uses animated angular gradients, layered blurs, and smooth transitions to recreate the dynamic glow seen in Apple’s design language.
 
-https://github.com/user-attachments/assets/d6e1ee27-c220-4d50-a24a-42b1b6a491f8
+
+https://github.com/user-attachments/assets/202ef238-9f16-4991-9fff-0ddeecfc8c6e
+
 
 ## Features
 
